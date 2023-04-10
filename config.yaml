@@ -16,4 +16,4 @@ init: false
 services:
   - mqtt:need
 
-#image: ghcr.io/primusnz/hassio-addons/{arch}-hvac-ip-mqtt-bridge
+image: ghcr.io/primusnz/hassio-addons/{arch}-hvac-ip-mqtt-bridge
