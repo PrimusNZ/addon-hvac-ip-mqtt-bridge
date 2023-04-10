@@ -1,11 +1,14 @@
-# docker build --pull --label gsasha/hvac_ip_mqtt_bridge:latest -t gsasha/hvac_ip_mqtt_bridge:latest .
-# docker build --pull --label gsasha/hvac_ip_mqtt_bridge:latest_arm -t gsasha/hvac_ip_mqtt_bridge:latest_arm .
-# docker build --label gsasha/hvac_ip_mqtt_bridge:latest .
-# docker push gsasha/hvac_ip_mqtt_bridge:latest
-# docker push gsasha/hvac_ip_mqtt_bridge:latest_arm
-FROM golang:latest
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
-LABEL maintainer="Sasha Gontmakher <gsasha@gmail.com>"
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# Install packages
+RUN apt-get update
+RUN apt-get install -y golang
+RUN apt-get clean -y
+RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /data
 
@@ -21,3 +24,4 @@ EXPOSE 8080
 
 CMD ["./bridge", "--config_file=/config/config.yaml"]
 
+LABEL org.opencontainers.image.source https://github.com/PrimusNZ/hassio-addons
