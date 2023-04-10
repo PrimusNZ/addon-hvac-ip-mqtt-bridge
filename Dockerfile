@@ -12,6 +12,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /data
 
+COPY run.sh /
 COPY go.mod go.sum ./
 
 RUN go mod download
@@ -22,6 +23,6 @@ RUN go build -o bridge
 
 EXPOSE 8080
 
-CMD ["./bridge", "--config_file=/config/config.yaml"]
+CMD [ "/run.sh" ]
 
 LABEL org.opencontainers.image.source https://github.com/PrimusNZ/hassio-addons
