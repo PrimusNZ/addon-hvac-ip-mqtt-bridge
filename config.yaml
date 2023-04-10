@@ -1,6 +1,6 @@
 ---
 name: HVAC IP MQTT Bridge
-version: 0.0.1
+version: 0.0.2
 slug: hvac_ip_mqtt_bridge
 description: A bridge to connect between ip-enabled HVAC units and mqtt (to be connected to HomeAssistant etc)
 url: https://github.com/PrimusNZ/addon-hvac-ip-mqtt-bridge
@@ -13,6 +13,20 @@ arch:
   - aarch64
 hassio_api: true
 init: false
+options:
+  name: My AC
+  ip: 192.168.0.1
+  mqtt_prefix: iphvac/myac
+  duid: 112233445566
+  auth_token: 11111111-2222-3333-4444-5555555555
+  model: samsungac2878
+schema:
+  name: str
+  ip: str
+  mqtt_prefix: str
+  duid: str
+  auth_token: str
+  model: list(samsungac2878)
 services:
   - mqtt:need
 
