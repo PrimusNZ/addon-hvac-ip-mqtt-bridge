@@ -19,7 +19,9 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o bridge
+RUN go build -o /bridge
+
+COPY openssl.cnf /etc/ssl/openssl.cnf
 
 EXPOSE 8080
 
