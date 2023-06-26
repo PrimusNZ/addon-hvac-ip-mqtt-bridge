@@ -1,10 +1,10 @@
 ---
 name: HVAC IP MQTT Bridge
-version: 1.0.0
+version: 1.0.1
 slug: hvac_ip_mqtt_bridge
 description: A bridge to connect between ip-enabled HVAC units and mqtt (to be connected to HomeAssistant etc)
 url: https://github.com/PrimusNZ/addon-hvac-ip-mqtt-bridge
-startup: application
+startup: services
 arch:
   - armhf
   - amd64
